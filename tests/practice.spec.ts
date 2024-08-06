@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import path from 'path';
 
 
-test('TC001 - Verify Checkboxes ', { tag: '@smoke' }, async ({ page }) => {
+test('TC001 - Verify Checkboxes ', async ({ page }) => {
   await page.goto('https://the-internet.herokuapp.com/');
   await page.getByRole('link').filter({ hasText: "checkboxes" }).click();
   expect(page.getByRole('heading')).toHaveText("Checkboxes")
@@ -14,7 +14,7 @@ test('TC001 - Verify Checkboxes ', { tag: '@smoke' }, async ({ page }) => {
   await expect(lastCheckbox).not.toBeChecked();
 });
 
-test('TC002 - Verify Drag and Drop', { tag: ['@smoke', '@regression'] }, async ({ page }) => {
+test('TC002 - Verify Drag and Drop', async ({ page }) => {
   await page.goto('https://the-internet.herokuapp.com/');
   await page.getByRole('link').filter({ hasText: "Drag and Drop" }).click();
   expect(page.getByRole('heading')).toHaveText("Drag and Drop")
@@ -24,7 +24,7 @@ test('TC002 - Verify Drag and Drop', { tag: ['@smoke', '@regression'] }, async (
   await expect(firstColumn).toHaveText('B');
 });
 
-test('TC003 - Verify Dropdown', { tag: '@smoke' }, async ({ page }) => {
+test('TC003 - Verify Dropdown', async ({ page }) => {
   await page.goto('https://the-internet.herokuapp.com/');
   await page.getByRole('link').filter({ hasText: "Dropdown" }).click();
   expect(page.getByRole('heading')).toHaveText("Dropdown List")
@@ -34,7 +34,7 @@ test('TC003 - Verify Dropdown', { tag: '@smoke' }, async ({ page }) => {
   await expect(page.locator('#dropdown')).toHaveValue('1')
 });
 
-test('TC004 - Verify Frame ', { tag: '@smoke' }, async ({ page }) => {
+test('TC004 - Verify Frame ', async ({ page }) => {
   await page.goto('https://www.globalsqa.com/demo-site/frames-and-windows');
   await page.getByRole('tab').filter({ hasText: "IFRAME" }).click();
   let frame = page.frameLocator('iframe[name="globalSqa"]')
@@ -44,7 +44,7 @@ test('TC004 - Verify Frame ', { tag: '@smoke' }, async ({ page }) => {
   await expect(frame.locator('.search_res')).toHaveText('Sorry, no posts matched your criteria.');
 });
 
-test('TC005 - Upload File', { tag: '@smoke' }, async ({ page }) => {
+test('TC005 - Upload File', async ({ page }) => {
   await page.goto('https://the-internet.herokuapp.com/');
   await page.getByRole('link').filter({ hasText: "File Upload" }).click();
   await page.waitForLoadState('domcontentloaded');
