@@ -29,7 +29,7 @@ test('TC003 - Verify Dropdown', async ({ page }) => {
   await page.getByRole('link').filter({ hasText: "Dropdown" }).click();
   expect(page.getByRole('heading')).toHaveText("Dropdown List")
   await page.selectOption('#dropdown', 'Option 2');
-  await expect.soft(page.locator('#dropdown')).toHaveValue('1')
+  await expect.soft(page.locator('#dropdown')).toHaveValue('2')
   await page.locator('#dropdown').selectOption({ value: '1' });
   await expect(page.locator('#dropdown')).toHaveValue('1')
 });
